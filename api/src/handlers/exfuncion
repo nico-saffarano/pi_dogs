@@ -1,0 +1,26 @@
+const { name, weight, height, life_span, image, temperament } = req.body;
+  try {
+    const newDog = createDog(
+      name,
+      weight,
+      height,
+      life_span,
+      image,
+      temperament
+    );
+
+    let temperamentDb = await Temperament.findAll({
+      where: { name: temperament },
+    });
+    await newDog.addTemperament(temperamentDb);
+    res.status(201).json(newDog);
+  } catch (error) {
+    res.status(400).json({ error: error.message });
+  }
+
+
+
+
+  source === "api"
+      ? await axios(`https://api.thedogapi.com/v1/breeds/${idRaza}`).data
+      : await Dog.findByPK(idRaza);
