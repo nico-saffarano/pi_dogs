@@ -2,15 +2,13 @@ import "./App.css";
 import Landing from "./views/Landing/Landing";
 import Home from "./views/Home/Home";
 import Detail from "./views/Detail/Detail";
-import Form from "./views/Form/Form";
 import { Routes, Route, useNavigate } from "react-router-dom";
 import Login from "./components/Login/Login";
-import { useState,useEffect } from "react";
+import { useState, useEffect } from "react";
+import Form from "./views/Form/Form";
 
 const EMAIL = "nico@mail.com";
 const PASSWORD = "123456";
-
-
 
 function App() {
   const [access, setAccess] = useState(false);
@@ -22,19 +20,19 @@ function App() {
       navigate("/home");
     }
   };
-  
 
   useEffect(() => {
     !access && navigate("/");
+    // eslint-disable-next-line
   }, [access]);
 
   return (
     <div className="App">
       <Routes>
-        <Route exact path="/" element={<Landing />} />
-        <Route path="/login" element={<Login login={login} />} />
+        <Route exact path="/" element={<Landing login={login} />} />
+        <Route path="/login" element={<Login/>} />
         <Route path="/home" element={<Home />} />
-        <Route path="/detail" element={<Detail />} />
+        <Route path="/dogs/:id" element={<Detail />} />
         <Route path="/create" element={<Form />} />
       </Routes>
     </div>

@@ -1,0 +1,12 @@
+.landingContainer{
+  background-color: #F0EBEC;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+  justify-content: center;
+}
+.textContainer{
+  display: flex;
+  flex-direction: column;
+}
