@@ -1,36 +1,56 @@
 import { useState } from "react";
-import { getDogByName } from "../../redux/actions";
+import { getAllDogs, getDogByName } from "../../redux/actions";
 import { useDispatch } from "react-redux";
 import style from "./SearchBar.module.css";
+import { useNavigate } from "react-router-dom";
 
 const SearchBar = () => {
 
   let [name, setName] = useState(""); // control del input
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   const handleChange = (event) => {
     event.preventDefault();
-    setName(event.target.value);
+    const value = event.target.value
+    setName(value);
   };
 
   const handleSubmit = (event) => {
     event.preventDefault();
     if(name) dispatch(getDogByName(name));
-    setName('');
   };
+
+  const handleResetSearch = (event) => {
+    event.preventDefault();
+    dispatch(getAllDogs());
+    setName("");
+    navigate('/home')
+  }
 
   return (
     <div className={style.container}>
-      <input //input para buscar las razas de perros
+      
+      {/* input de busqueda */}
+      <input
         type="search"
         className={style.input}
         onChange={handleChange}
         value={name}
       />
+
       {/* boton de busqueda */}
       <button onClick={handleSubmit} className={style.button}>
         Agregar
       </button>
+
+      {/* boton de reinicio de busqueda, solo se activa si busqué algo */}
+      {name && (
+        <button onClick={handleResetSearch} className={style.button}>
+          Reset Search
+        </button>
+      )}
+
     </div>
   );
 };

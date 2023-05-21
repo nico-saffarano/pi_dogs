@@ -18,7 +18,7 @@ const getDogsHandler = async (req, res) => {
       );
       dogSelected.length
         ? res.status(200).json(dogSelected)
-        : res.status(404).send({ error: "No hay perros con ese nombre!" });
+        : res.status(404).send({ error: "There's not dogs with that name!" });
     } else {
       return res.status(201).json(allDogs);
     }
@@ -27,10 +27,9 @@ const getDogsHandler = async (req, res) => {
   }
 };
 
-
 const getDogHandler = async (req, res) => {
   const { id } = req.params;
-  console.log('el id desde el handler',id)
+  console.log("el id desde el handler", id);
   const allDogs = await getAllDogs();
   try {
     const dogId = allDogs.filter((dog) => dog.id == id);
@@ -43,52 +42,44 @@ const getDogHandler = async (req, res) => {
 };
 
 const postNewDog = async (req, res) => {
-  const {
-    name,
-    image,
-    height_min,
-    height_max,
-    weight_min,
-    weight_max,
-    life_span,
-    createdInDB,
-    temperament,
-  } = req.body;
   try {
-    const dogFind = await Dog.findOne({
-      where: { name },
+    const {
+      name,
+      image,
+      height_min,
+      height_max,
+      weight_min,
+      weight_max,
+      life_span,
+      createdInDB,
+      temperament,
+    } = req.body;
+
+    // Crear la raza de perro en la base de datos
+    const newDog = await Dog.create({
+      name,
+      image,
+      height_min,
+      height_max,
+      weight_min,
+      weight_max,
+      life_span,
+      CreatedInDB: createdInDB,
     });
-    if (dogFind) {
-      return res.status(404).send("There is a dog with that name!");
-    } else {
-      const newDog = await Dog.create({
-        name,
-        image,
-        height_min,
-        height_max,
-        weight_min,
-        weight_max,
-        life_span,
-        createdInDB,
-      });
-      //por body me llega un array de temperamentos,deberia  recorrer ese array
-      //recorro y pregunto si en el array , hay temperaments que coincidan en la db
-      //
 
-      for (let i = 0; i < temperament.length; i++) {
-        const element = temperament[i];
+    // Relacionar el perro con los temperamentos indicados
+    const temperamentRecords = await Temperament.findAll({
+      where: { name: temperament },
+    });
 
-        // hago la verificación y consulta en la db
-        const result = await Temperament.findOne({ where: { name: element } });
-        newDog.addTemperament(result);
-      }
+    await newDog.addTemperaments(temperamentRecords);
 
-      return res.status(200).send("Successfully created!");
-    }
+    res.status(201).json(newDog);
   } catch (error) {
-    res.status(500).json({ error: error.message });
+    console.error(error);
+    res.status(500).json({ error: 'Internal server error' });
   }
-};
+}
 
 module.exports = {
   getDogsHandler,

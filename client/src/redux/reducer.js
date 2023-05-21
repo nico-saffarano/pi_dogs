@@ -4,7 +4,8 @@ import {
   CLEAR_DETAIL,
   GET_DOG_BY_NAME,
   GET_TEMPERAMENTS,
-  CREATE_DOG,
+  CREATE_DOG_SUCCESS,
+  CREATE_DOG_FAILURE,
   FILTER_BY_NAME,
   FILTER_BY_WEIGHT,
   FILTER_BY_TEMPERAMENT,
@@ -16,6 +17,7 @@ const initialState = {
   dogs: [],
   dogDetail: [],
   temperaments: [],
+  error: null,
 };
 
 const reducer = (state = initialState, action) => {
@@ -46,10 +48,18 @@ const reducer = (state = initialState, action) => {
         ...state,
         temperaments: action.payload,
       };
-    case CREATE_DOG:
-      return {
-        ...state,
-      };
+      case CREATE_DOG_SUCCESS:
+        return {
+          ...state,
+          dog: action.payload,
+          error: null,
+        };
+      case CREATE_DOG_FAILURE:
+        return {
+          ...state,
+          dog: null,
+          error: action.payload,
+        };
 
     case FILTER_BY_NAME:
       let dogs = state.dogs;

@@ -1,18 +1,43 @@
 .formContainer{
   background-color: #C79861;
-  width: 240px;
+  border-radius: 5px;
+  box-shadow: 2px 2px 6px 0px #666663;
+  width: 220px;
   height: 260px;
   display: flex;
   flex-direction: column;
   justify-content: space-around;
   align-items: center;
-
+  font-family: 'Inter', sans-serif;
+  font-weight: 300;
+  font-size: 15px;
+  position: absolute;
+  top: 120px;
+  right: 140px;
 }
 .labelInput{
   display: flex;
   flex-direction: column;
+  color: #805C40;
 }
 
 .input{
-  border-radius: 2px;
+  border: 3px solid transparent;
+  border-radius: 3px;
+  height: 20px;
+  background-color: #D9D9D9;
+  
+}
+
+.btn{
+  background-color: #D9D9D9;
+  border: 3px solid transparent;
+  border-radius: 3px;
+  font-weight: 500;
+  height: 30px;
+  width: 90px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #805C40;
 }

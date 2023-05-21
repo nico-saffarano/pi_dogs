@@ -1,0 +1,31 @@
+/* Pagination.module.css */
+.pagination {
+  list-style: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0;
+  margin: 20px 0;
+}
+
+.pagination-item {
+  cursor: pointer;
+  margin: 0 5px;
+  padding: 5px 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.pagination-item:hover {
+  background-color: #f0f0f0;
+}
+
+.pagination-item.active {
+  background-color: #ccc;
+  color: #fff;
+}
+
+.pagination-item.disabled {
+  pointer-events: none;
+  opacity: 0.5;
+}

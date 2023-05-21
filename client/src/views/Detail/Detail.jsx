@@ -27,6 +27,7 @@ const Detail = () => {
         <div>
           <div>
             <h1> Name : {dogDetails?.name}</h1>
+            <h1>Id: {dogDetails?.id}</h1>
             <h2>Life expectations : {dogDetails?.life_span}</h2>
             <h2>
               {" "}

@@ -8,6 +8,8 @@ import {
   FILTER_BY_WEIGHT,
   FILTER_BY_TEMPERAMENT,
   FILTER_BY_ORIGIN,
+  CREATE_DOG_SUCCESS,
+  CREATE_DOG_FAILURE
 } from "./action-types";
 import axios from "axios";
 
@@ -64,18 +66,29 @@ export function getTemperaments() {
   };
 }
 
-export const createDog = (data) => {
+ /* export const createDog = (data) => {
   return async function () {
     const newDog = await axios.post("http://localhost:3001/dogs", data);
-    console.log("el perro", newDog.config.data);
-    console.log(
-      "el temperamento del perro",
-      JSON.parse(newDog.config.data).temperament
-    );
-
+    console.log("el perro DE ACTION ", newDog.config.data);
     return newDog;
   };
-};
+}; */ 
+/* export const createDog = (data) => {
+  return async () => {
+    try {
+      const newDog = await axios.post("http://localhost:3001/dogs", data);
+      console.log("El perro", newDog.config.data);
+      console.log(
+        "El temperamento del perro",
+        JSON.parse(newDog.config.data).temperament
+      );
+
+      return newDog;
+    } catch (error) {
+      console.error(error);
+    }
+  };
+}; */
 
 export const filterByName = (payload) => {
   return {
@@ -104,6 +117,30 @@ export const filterByOrigin = (origin) => {
     payload: origin,
   };
 };
+
+
+
+
+
+export const createDog = (dogData) => {
+  return (dispatch) => {
+    axios
+      .post('http://localhost:3001/dogs', dogData)
+      .then((response) => {
+        dispatch({
+          type: CREATE_DOG_SUCCESS,
+          payload: response.data,
+        });
+      })
+      .catch((error) => {
+        dispatch({
+          type: CREATE_DOG_FAILURE,
+          payload: error.message,
+        });
+      });
+  };
+};
+
 
 //getAllDogs -> funcionando
 //retorno una funcion asincrona donde:

@@ -1,29 +1,6 @@
 const { Dog, Temperament } = require("../db");
 const axios = require("axios");
 
-const createDog = async (
-  name,
-  image,
-  height_min,
-  height_max,
-  weight_min,
-  weight_max,
-  life_span,
-  temperament
-) => {
-  const newDog = await Dog.create({
-    name,
-    image,
-    height_min,
-    height_max,
-    weight_min,
-    weight_max,
-    life_span,
-    temperament,
-  });
-
-  return newDog;
-};
 
 const getApi = async () => {
   const dogsFromApi = await axios.get("https://api.thedogapi.com/v1/breeds");
@@ -44,39 +21,38 @@ const getApi = async () => {
 };
 
 const getDB = async () => {
-  let dogFromDb = await Dog.findAll({
-    include: {
-      model: Temperament,
-      attributes: ["name"],
-      through: {
-        attributes: [],
+  try {
+    const dogFromDb = await Dog.findAll({
+      include: {
+        model: Temperament,
+        attributes: ["name"],
+        through: {
+          attributes: [],
+        },
       },
-    },
-  });
+    });
 
-  dogFromDb = dogFromDb.map((dog) => {
-    return {
-      id: dog.id,
-      name: dog.name,
-      weight_min:dog.weight_min,
-      weight_max:dog.weight_max ,
-      life_span: dog.life_span,
-      image: dog.image,
-      height_min:dog.height_min,
-      height_max:dog.height_max,
-      temperament: dog.temperaments
-        ? dog.temperaments
-            .map((element) => {
-              return element.name;
-            })
-            .join(",")
-        : null,
-    };
-  });
+    const dogsWithTemperaments = dogFromDb.map((dog) => {
+      const temperaments = dog.Temperaments.map((temperament) => temperament.name);
+      return {
+        id: dog.id,
+        name: dog.name,
+        weight_min: dog.weight_min,
+        weight_max: dog.weight_max,
+        life_span: dog.life_span,
+        image: dog.image,
+        height_min: dog.height_min,
+        height_max: dog.height_max,
+        temperament: temperaments.length > 0 ? temperaments.join(",") : "There are no temperaments",
+      };
+    });
 
-  return dogFromDb;
+    return dogsWithTemperaments;
+  } catch (error) {
+    console.error(error);
+    throw new Error("Failed to retrieve dogs from the database.");
+  }
 };
-
 const getAllDogs = async () => {
   let dbInfo = await getDB();
   let apiInfo = await getApi();
@@ -84,4 +60,4 @@ const getAllDogs = async () => {
   return allInfo;
 };
 
-module.exports = { createDog, getAllDogs, getApi, getDB };
+module.exports = { getAllDogs, getApi, getDB };

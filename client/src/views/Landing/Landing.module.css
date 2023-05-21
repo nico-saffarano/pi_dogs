@@ -1,12 +1,35 @@
-.landingContainer{
-  background-color: #F0EBEC;
+.landingContainer {
+  background-color: #f0ebec;
   display: flex;
   flex-direction: row;
   justify-content: space-around;
   align-items: center;
   justify-content: center;
 }
-.textContainer{
+
+.textContainer {
   display: flex;
   flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  font-family: 'Inter', sans-serif;
+  position: absolute;
+  top: 100px;
+  left: 30px;
+/*   background-color: aqua; */
+  width: 693px;
+  height: 300px;
 }
+
+.mainTitle {
+  font-weight: 900;
+  font-size: 95px;
+}
+
+.miniTitle {
+  position:absolute;
+  top: 70px;
+  left: 5px;
+  font-weight: 500;
+}
+

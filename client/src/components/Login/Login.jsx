@@ -60,7 +60,7 @@ const Login = ({ login }) => {
       </div>
 
       {errors.password && <p style={{ color: "red" }}>{errors.password}</p>}
-      <button type="submit" disabled={errors.email || errors.password}>
+      <button className={style.btn} type="submit" disabled={errors.email || errors.password}>
         Login
       </button>
     </form>

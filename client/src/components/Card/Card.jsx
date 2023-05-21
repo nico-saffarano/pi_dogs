@@ -4,7 +4,7 @@ import style from './Card.module.css'
 const Card = ({id,name,temperament,height_min,height_max,weight_min,weight_max,life_span,image}) => {
   return <div>
     <Link to={`/dogs/${id}`}>
-    <p>Nombre:{name}</p>
+    <p>Name:{name}</p>
     </Link>
     <p>Height:{height_min}-{height_max}cm</p>
     <p>Weight:{weight_min}-{weight_max}kg</p>
