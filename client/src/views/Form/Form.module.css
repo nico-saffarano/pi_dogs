@@ -1,0 +1,246 @@
+.container{
+  
+  background-position: center bottom -60px; 
+  background-size: cover;
+  background-repeat: no-repeat;
+  height: 100vh;
+  width: 100vw;
+  overflow: hidden;
+  font-weight: 400;
+}
+
+.formContainer {
+  background-color: #666663ba;
+  font-family: var(--main-font);
+  color: black;
+  font-size: 14px;
+  
+  position: relative;
+  top: 250px;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  
+  flex-direction: row;
+  flex-wrap: wrap;
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  height: 400px;
+  width: 650px;
+  padding: 10px;
+  gap: 2px;
+  border: 5px solid #3c3c3b;
+  
+}
+
+.btnBackHome {
+  background-color: var(--sand-brown);
+  height: 35px;
+  width: 120px;
+  transition: background-color 0.1s linear 0s;
+  position: absolute;
+  top: 15px;
+  right: 58px;
+  border: none;
+  margin-left: 5px;
+
+  font-family: var(--main-font);
+  font-weight: 400;
+  cursor: pointer;
+}
+.link {
+  text-decoration: none;
+}
+
+.link:visited {
+  color: inherit;
+}
+.name {
+  display: flex;
+  flex-direction: row;
+  font-weight: 300;
+  height: 25px;
+  position: absolute;
+  top: 35px;
+}
+.inputName {
+  background-color: var(--pale-pink-grey);
+  border-width: 2px 2px 2px 2px;
+  border-style: solid;
+  border-color: var(--dark-brown);
+  margin-left: 3px;
+}
+
+.heightContainer {
+  
+  font-size: 14px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  margin-right: 5px;
+  align-items: center;
+  position: absolute;
+  top: 110px;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.weightContainer {
+  
+  font-size: 14px;
+  margin-right: 5px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  top: 170px;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+.lifeExpectations {
+  flex-direction: column;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  top: 230px;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+.temperament {
+  
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  top: 110px;
+  left: 110px;
+  padding: 5px 5px;
+  transform: translate(-50%, -50%);
+}
+.selectTemp {
+  
+  background-color: var(--pale-pink-grey);
+  height: 25px;
+  border: none;
+  cursor: pointer;
+}
+.tempOption {
+  background-color: var(--pale-pink-grey);
+}
+.temperamentList {
+  flex-direction: row;
+  display: flex;
+  flex-wrap: wrap;
+  align-content: flex-start;
+  justify-content: flex-start;
+  transition: background-color 0.1s linear 0s;
+  position: absolute;
+  bottom: 55px;
+  left: 220px;
+  right: 680px;
+  border: none;
+  margin-left: 5px;
+  height: 270px;
+  color: var(--dark-brown);
+  font-family: var(--main-font);
+  font-weight: 400;
+  cursor: pointer;
+}
+.tempShownContainer {
+  
+  background-color: var(--pale-pink-grey);
+  padding: 5px;
+  height: 20px;
+  margin-right: 5px;
+  margin-top: 5px;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 5px;
+}
+.temperamentShown {
+  margin-right: 5px;
+  margin-top: 5px;
+  margin-bottom: 5px;
+  font-family: var(--main-font);
+  font-size: 13px;
+  color: black;
+  font-weight: 400;
+
+  position: relative;
+}
+
+.input {
+  margin-left: 3px;
+  font-weight: 500;
+  width: 30px;
+  height: 20px;
+  background-color: var(--pale-pink-grey);
+  border: none;
+  border-width: 2px 2px 2px 2px;
+  border-style: solid;
+  border-color: var(--dark-brown);
+}
+.inputImg {
+  font-weight: 300;
+  width: 150px;
+  height: 15px;
+  background-color: var(--sand-brown);
+  border: 2px solid var(--dark-brown);
+  border-radius: 2px;
+  background-color: var(--pale-pink-grey);
+}
+.imgContainer {
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  top: 90px;
+  right: 50px;
+}
+.imgForm {
+  max-width: 100px;
+  position: absolute;
+  top: 150px;
+  right: 50px;
+  border: 3px solid var(--dark-brown);
+}
+.btn {
+  border: 3px solid var(--dark-brown);
+  color: var(--dark-brown);
+  background-color: var(--pale-pink-grey);
+  position: absolute;
+  font-size: 20px;
+  bottom: 120px;
+  width: 150px;
+  height: 40px;
+}
+.errorContainer {
+  display: flex;
+  flex-direction: column-reverse;
+
+  width: 250px;
+  height: 90px;
+  position: absolute;
+  bottom: 40px;
+  left: 55%;
+  transform: translateX(-50%);
+align-content: center;
+  padding: 10px; 
+  justify-content: center;
+  align-items: flex-start;
+}
+
+.error {
+  color: red;
+  margin-top: -16px;
+  margin-bottom: 0px;
+  font-weight: 500;
+}
+
+.label{
+  margin-left: 5px;
+}

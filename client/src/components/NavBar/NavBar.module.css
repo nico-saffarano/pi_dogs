@@ -1,0 +1,19 @@
+.createBtn{
+  background-color: var(--pale-pink-grey);
+  position: absolute;
+  top: 15px;
+  right:315px;
+  border: none;
+  margin-left: 5px;
+  height: 28px;
+  color: var(--dark-brown);
+  font-family: var(--main-font);
+  font-weight: 400;
+  cursor: pointer;
+}
+
+.linkCreate{
+  text-decoration: none;
+  font-family: var(--main-font);
+  color: var(--dark-brown);
+}

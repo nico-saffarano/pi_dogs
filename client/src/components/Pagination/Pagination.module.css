@@ -14,6 +14,7 @@
   padding: 5px 10px;
   border: 1px solid #ccc;
   border-radius: 5px;
+  font-size: 12px;
 }
 
 .pagination-item:hover {
@@ -22,7 +23,7 @@
 
 .pagination-item.active {
   background-color: #ccc;
-  color: #fff;
+  color: #090909;
 }
 
 .pagination-item.disabled {

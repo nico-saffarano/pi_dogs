@@ -2,39 +2,39 @@ import { useSelector } from "react-redux";
 import Card from "../Card/Card";
 import { useState } from "react";
 import Pagination from "../Pagination/Pagination";
+import style from './Cards.module.css'
 
 const Cards = () => {
   const dogs = useSelector((state) => state.dogs);
 
-  
   const [page, setPage] = useState(1);
-  const [perPage, setPerPage] = useState(10);
+  const [perPage, setPerPage] = useState(15);
 
-
- 
-  const max = dogs.length / perPage
+  const max = dogs.length / perPage;
 
   return (
     <div>
-      {dogs.slice((page-1)*perPage,(page-1)*perPage+perPage)
-      .map((dog) => {
-        return (
-          <Card
-            id={dog.id}
-            key={dog.id}
-            name={dog.name}
-            temperament={dog.temperament}
-            height_min={dog.height_min}
-            height_max={dog.height_max}
-            weight_min={dog.weight_min}
-            weight_max={dog.weight_max}
-            life_span={dog.life_span}
-            image={dog.image}
-          />
-        );
-      })}
-
-      <Pagination page={page} setPage={setPage} max={max}/>
+      <div className={style.cardsContainer}>
+        {dogs
+          .slice((page - 1) * perPage, (page - 1) * perPage + perPage)
+          .map((dog) => {
+            return (
+              <Card
+                id={dog.id}
+                key={dog.id}
+                name={dog.name}
+                temperament={dog.temperament}
+                height_min={dog.height_min}
+                height_max={dog.height_max}
+                weight_min={dog.weight_min}
+                weight_max={dog.weight_max}
+                life_span={dog.life_span}
+                image={dog.image}
+              />
+            );
+          })}
+      </div>
+      <Pagination page={page} setPage={setPage} max={max} />
     </div>
   );
 };

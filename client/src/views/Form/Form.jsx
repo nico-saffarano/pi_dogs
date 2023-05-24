@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { useNavigate, Link } from "react-router-dom";
+import { useNavigate, NavLink } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { createDog, getTemperaments } from "../../redux/actions";
 import style from "../Form/Form.module.css";
@@ -38,8 +38,6 @@ export default function Form() {
     dispatch(getTemperaments());
   }, [dispatch]);
 
-  
-
   const handleTemperament = (event) => {
     if (!form.temperament.includes(event.target.value)) {
       setForm({
@@ -48,12 +46,6 @@ export default function Form() {
       });
     }
   };
-
-
-  console.log("form", form.temperament);
-
-
-  
 
   const handleDeleteTemperament = (event, temperament) => {
     setForm({
@@ -67,7 +59,7 @@ export default function Form() {
     dispatch(createDog(form));
     alert("Successfully created!");
     navigate("/home");
- 
+
     setForm({
       name: "",
       height_min: 0,
@@ -75,123 +67,132 @@ export default function Form() {
       weight_min: 0,
       weight_max: 0,
       life_span: 0,
-      image:'',
+      image: "",
       temperament: [],
-    }); 
+    });
   };
 
-
   return (
-    <div>
-      <button>
-        Back home
-        <Link to="/home"></Link>
+    <div className={style.container}>
+      <button className={style.btnBackHome}>
+        <NavLink className={style.link} to="/home">Back home</NavLink>
       </button>
 
-      <form onSubmit={handleSubmit}>
-        <label>
-          Name :
+      <form onSubmit={handleSubmit} className={style.formContainer}>
+        <label className={style.name}>
+          Name 
           <input
             required
             type="text"
             value={form.name}
             name="name"
             onChange={(event) => handleChange(event)}
+            className={style.inputName}
           />
         </label>
-        <h6>{errors.name && <p> {errors.name} </p>}</h6>
 
-        <label>
-          Min height :
-          <input
-            min="0"
-            type="number"
-            value={form.height_min}
-            name="height_min"
-            onChange={handleChange}
-          />
-        </label>
-        <h6>{errors.height_min && <p> {errors.height_min} </p>}</h6>
+        <div className={style.heightContainer}>
+          <label className={style.label}>
+            Min height 
+            <input
+              min="0"
+              type="number"
+              value={form.height_min}
+              name="height_min"
+              onChange={handleChange}
+              className={style.input}
+            />
+          </label>
 
-        <label>
-          Max height :
-          <input
-            min="0"
-            type="number"
-            value={form.height_max}
-            name="height_max"
-            onChange={handleChange}
-          />
-        </label>
-        <h6>{errors.height_max && <p> {errors.height_max} </p>}</h6>
+          <label className={style.label}>
+            Max height 
+            <input
+              min="0"
+              type="number"
+              value={form.height_max}
+              name="height_max"
+              onChange={handleChange}
+              className={style.input}
+            />
+          </label>
+        </div>
+        <div className={style.weightContainer}>
+          <label className={style.label}>
+            Min weight
+            <input
+              min="0"
+              type="number"
+              value={form.weight_min}
+              name="weight_min"
+              onChange={handleChange}
+              className={style.input}
+            />
+          </label>
 
-        <label>
-          Min weight :
-          <input
-            min="0"
-            type="number"
-            value={form.weight_min}
-            name="weight_min"
-            onChange={handleChange}
-          />
-        </label>
-        <h6>{errors.weight_min && <p> {errors.weight_min} </p>}</h6>
-
-        <label>
-          Max weight :
-          <input
-            min="0"
-            type="number"
-            value={form.weight_max}
-            name="weight_max"
-            onChange={handleChange}
-          />
-        </label>
-        <h6>{errors.weight_max && <p> {errors.weight_max} </p>}</h6>
-
-        <label>
-          Life expectations:
+          <label className={style.label}>
+            Max weight 
+            <input
+              min="0"
+              type="number"
+              value={form.weight_max}
+              name="weight_max"
+              onChange={handleChange}
+              className={style.input}
+            />
+          </label>
+        </div>
+        <label className={style.lifeExpectations}>
+          Life expectations
           <input
             min="0"
             type="number"
             value={form.life_span}
             name="life_span"
             onChange={handleChange}
+            className={style.input}
           />
         </label>
-        <h6>{errors.life_span && <p> {errors.life_span} </p>}</h6>
 
-        <label>
+        <label className={style.temperament}>
           Temperaments
-          <select onChange={handleTemperament} defaultValue="all">
-            <option value="all" disabled>
+          <select
+            className={style.selectTemp}
+            onChange={handleTemperament}
+            defaultValue="all"
+          >
+            <option className={style.tempOption} value="all" disabled>
               Choose
             </option>
             {allTemperaments.map((temp) => {
               return (
-                <option value={temp.name} key={temp.id}>
+                <option
+                  className={style.tempOption}
+                  value={temp.name}
+                  key={temp.id}
+                >
                   {temp.name}
                 </option>
               );
             })}
           </select>
         </label>
-        <h6>{errors.temperament && <p> {errors.temperament} </p>}</h6>
+
         <div>
-          <label>
-            Image:
+          <label className={style.imgContainer}>
+            Image
             <input
               type="text"
               value={form.image}
               name="image"
               onChange={handleChange}
               placeholder="Load your photo from url"
+              className={style.inputImg}
             />
           </label>
           {form.image && (
             <div>
               {form.image.startsWith("http") ? (
-                <img src={form.image} alt="Dog" />
+                <img className={style.imgForm} src={form.image} alt="Dog" />
               ) : (
                 <p>{form.image}</p>
               )}
@@ -204,20 +205,42 @@ export default function Form() {
         </button>
       </form>
 
-      <div>
+      <div className={style.temperamentList}>
         {form.temperament.map((d, i) => {
           return (
-            <div key={i++}>
-              <div className={style.btnh3}> {d} </div>
-              <button
-                className={style.eraserbtn}
+            <div className={style.tempShownContainer} key={i++}>
+              <div
+                className={style.temperamentShown}
                 onClick={(event) => handleDeleteTemperament(event, d)}
               >
-                X
-              </button>
+                {" "}
+                {d}{" "}
+              </div>
             </div>
           );
         })}
+      </div>
+
+      <div className={style.errorContainer}>
+        <h6 className={style.error}>{errors.name && <p> {errors.name} </p>}</h6>
+        <h6 className={style.error}>
+          {errors.height_min && <p> {errors.height_min} </p>}
+        </h6>
+        <h6 className={style.error}>
+          {errors.height_max && <p> {errors.height_max} </p>}
+        </h6>
+        <h6 className={style.error}>
+          {errors.weight_min && <p> {errors.weight_min} </p>}
+        </h6>
+        <h6 className={style.error}>
+          {errors.weight_max && <p> {errors.weight_max} </p>}
+        </h6>
+        <h6 className={style.error}>
+          {errors.life_span && <p> {errors.life_span} </p>}
+        </h6>
+        <h6 className={style.error}>
+          {errors.temperament && <p> {errors.temperament} </p>}
+        </h6>
       </div>
     </div>
   );

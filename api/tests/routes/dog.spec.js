@@ -1,24 +1,32 @@
 /* eslint-disable import/no-extraneous-dependencies */
+const app = require('../index');
+const supertest = require('supertest');
 const { expect } = require('chai');
-const session = require('supertest-session');
-const app = require('../../src/app.js');
-const { Dog, conn } = require('../../src/db.js');
 
-const agent = session(app);
-const dog = {
-  name: 'Pug',
-};
+const request = supertest(app);
 
-describe('Videogame routes', () => {
-  before(() => conn.authenticate()
-  .catch((err) => {
-    console.error('Unable to connect to the database:', err);
-  }));
-  beforeEach(() => Dog.sync({ force: true })
-    .then(() => Dog.create(dog)));
-  describe('GET /dogs', () => {
-    it('should get 200', () =>
-      agent.get('/dogs').expect(200)
-    );
+describe('GET /dogs', () => {
+  it('debe retornar una lista de perros', async () => {
+    const response = await request.get('http://localhost:3001/dogs');
+    expect(response.status).to.equal(200);
+    expect(response.body).to.be.an('array');
   });
 });
+
+describe('GET /dogs/:id', () => {
+  it('debe retornar un perro específico', async () => {
+    const id = '123'; // Reemplaza con un ID válido existente en tu base de datos
+    const response = await request.get(`http://localhost:3001/dogs/${id}`);
+    expect(response.status).to.equal(200);
+    expect(response.body).to.be.an('object');
+    expect(response.body.id).to.equal(id);
+  });
+
+  it('debe retornar un error si se proporciona un ID inválido', async () => {
+    const id = 'invalid_id';
+    const response = await request.get(`http://localhost:3001/dogs/${id}`);
+    expect(response.status).to.equal(404);
+  });
+});
+
+

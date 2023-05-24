@@ -1,7 +1,7 @@
 const validate = (form) => {
   let errors = {}
   if(!form.name){
-      errors.name = 'Must be a name'
+      errors.name = 'You must enter a name'
   }
 
   if(form.name && !/^[a-zA-Z]*$/.test(form.name)){

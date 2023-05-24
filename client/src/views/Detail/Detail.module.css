@@ -1,0 +1,105 @@
+.boxContainer{
+  display: flex;
+  justify-content: center; 
+  align-items: center; 
+  position: absolute;
+  top: 90px; 
+  flex-direction: row;  
+  align-content: center;
+  width: 100%;
+  height: 300px;
+  left :0px;
+  gap: 5px;
+}
+
+.textContainer{
+  background-color: #dad8d8d5;
+  border: 5px solid var(--dim-gray);
+  width: 434px;
+  height: 272px;
+  display: flex;
+  flex-direction: column;
+  font-family: var(--main-font);
+  font-weight: 200;
+  position: relative;
+  top: 9px; 
+}
+.textContainer h5{
+  margin-bottom: -2px;
+}
+.imgContainer{
+  max-height: 262px;
+  max-width: 434px;
+}
+.img{
+  max-height: 272px;
+  width: 434px;
+  border: 5px solid var(--dim-gray);
+}
+
+.title{
+  font-weight: 400;
+  font-size: 18px;
+  font-family: var(--main-font);
+  position :absolute;
+  top: -25px;
+  color: var(--pale-pink-grey);
+  left :200px;
+}
+.title img{
+  position: absolute;
+  left: -200px;
+  top: 25px;
+}
+.loader{
+  position: absolute;
+  top: 250px;
+  left: 50%;
+  transform: translate(-50px, -50px);
+  max-width: 50px;
+}
+.btnContainer{
+  background-color: #666663;
+  position: absolute;
+  top: 0px;
+  height: 45px;
+  width: 100%;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+.btnBack{
+  background-color: var(--sand-brown);
+  height: 35px;
+  width: 120px;
+  transition: background-color 0.1s linear 0s;
+  position: absolute;
+  top: 5px;
+  right: 48px;
+  border: none;
+  margin-left: 5px;
+  font-family: var(--main-font);
+  font-size: 12px;
+  font-weight: 400;
+  cursor: pointer;
+  color: var(--dark-brown);
+}
+
+.link{
+  text-decoration: none;
+  color: var(--dark-brown);
+  font-family: var(--main-font);
+  font-weight: 400;
+  font-size: 16px;
+ 
+}
+.link:visited {
+  color: inherit;
+}
+.logo{
+  width: 150px;
+  padding: 10px;
+  position: absolute;
+  top: 10px;
+  left: 10px;
+}

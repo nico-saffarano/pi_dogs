@@ -1,16 +1,18 @@
-import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import style from './Card.module.css'
 
 const Card = ({id,name,temperament,height_min,height_max,weight_min,weight_max,life_span,image}) => {
-  return <div>
-    <Link to={`/dogs/${id}`}>
-    <p>Name:{name}</p>
-    </Link>
-    <p>Height:{height_min}-{height_max}cm</p>
-    <p>Weight:{weight_min}-{weight_max}kg</p>
-    <p>Life expectations:{life_span}</p>
-    <p>Temperament:{temperament}</p>
+  return <div className={style.cardContainer}>
+    <NavLink className={style.dataName} to={`/dogs/${id}`}>
+    <p >{name}</p>
+    </NavLink>
+    <NavLink className={style.dataName} to={`/dogs/${id}`}>
     <img className = {style.img}src={image } alt={name} />
+    </NavLink>
+    <p className={style.data}>Height:{height_min}-{height_max}cm</p>
+    <p className={style.data}>Weight:{weight_min}-{weight_max}kg</p>
+    <p className={style.data}>Life expectations:{life_span}</p>
+    
   </div>;
 };
 

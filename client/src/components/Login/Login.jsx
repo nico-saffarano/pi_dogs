@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import validation from "./validation";
-import style from './Login.module.css'
+import style from "./Login.module.css";
+import { NavLink } from "react-router-dom";
 
 const Login = ({ login }) => {
   const [userData, setUserData] = useState({
@@ -35,33 +36,46 @@ const Login = ({ login }) => {
   return (
     <form onSubmit={handleSubmit} className={style.formContainer}>
       <div>
-        <label htmlFor="email" className={style.labelInput}>Email:</label>
         <input
           type="email"
           name="email"
           value={userData.email}
           onChange={handleChange}
-          placeholder="nico@mail.com"
-          className={style.input}
+          placeholder="Email or Username"
+          className={style.inputEmail}
         />
-        {errors.email && <p style={{ color: "red" }}>{errors.email}</p>}
+        {errors.email && (
+          <p className={style.validationEmail}>{errors.email}</p>
+        )}
       </div>
 
       <div>
-        <label htmlFor="password" className={style.labelInput}>Password:</label>
         <input
           type="password"
           name="password"
           value={userData.password}
           onChange={handleChange}
-          placeholder="123456"
-          className={style.input}
+          placeholder="Password"
+          className={style.inputPass}
         />
       </div>
-
-      {errors.password && <p style={{ color: "red" }}>{errors.password}</p>}
-      <button className={style.btn} type="submit" disabled={errors.email || errors.password}>
-        Login
+      <div className={style.helpLinksContainer}>
+        <NavLink className={style.helpLinkPass}>
+          Did you forgot your password?
+        </NavLink>
+        <NavLink className={style.helpLinkAccount}>
+          Don't you have an account?
+        </NavLink>
+      </div>
+      {errors.password && (
+        <p className={style.validationPass}>{errors.password}</p>
+      )}
+      <button
+        className={style.btnLogin}
+        type="submit"
+        disabled={errors.email || errors.password}
+      >
+        LOGIN
       </button>
     </form>
   );

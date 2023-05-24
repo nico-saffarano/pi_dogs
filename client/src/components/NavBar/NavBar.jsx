@@ -1,21 +1,13 @@
 import SearchBar from "../SearchBar/SearchBar.jsx";
-import styles from "./NavBar.module.css";
-import { Link } from "react-router-dom";
+import style from "./NavBar.module.css";
+import { NavLink } from "react-router-dom";
 
 const NavBar = () => {
   return <div>
-     <SearchBar className={styles.searchBar} />
-      <button>
-        <Link to="/about">About</Link>
-      </button>
-      <button>
-        <Link to="/home">Home</Link>
-      </button>
-      <button>
-        <Link to='/favorites'>Favorites</Link>
-      </button>
-      <button>
-        <Link to='/create'>Crear</Link>
+     <SearchBar className={style.searchBar} />
+     
+      <button className={style.createBtn}>
+        <NavLink className={style.linkCreate} to='/create'>Create</NavLink>
       </button>
   </div>;
 };

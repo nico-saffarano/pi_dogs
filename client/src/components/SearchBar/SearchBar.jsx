@@ -34,22 +34,25 @@ const SearchBar = () => {
       {/* input de busqueda */}
       <input
         type="search"
-        className={style.input}
+        className={style.bar}
         onChange={handleChange}
         value={name}
+        placeholder="Search a breed"
       />
 
+      <div className={style.btnContainer}>
       {/* boton de busqueda */}
-      <button onClick={handleSubmit} className={style.button}>
-        Agregar
+      <button onClick={handleSubmit} className={style.btnSearch}>
+        Search
       </button>
 
       {/* boton de reinicio de busqueda, solo se activa si busqué algo */}
       {name && (
-        <button onClick={handleResetSearch} className={style.button}>
-          Reset Search
+        <button onClick={handleResetSearch} className={style.btnReset}>
+          Reset
         </button>
       )}
+      </div>
 
     </div>
   );
