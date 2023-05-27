@@ -1,36 +1,52 @@
-.container{
-  
-  background-position: center bottom -60px; 
+.container {
+  background-position: center bottom -60px;
   background-size: cover;
   background-repeat: no-repeat;
   height: 100vh;
   width: 100vw;
   overflow: hidden;
-  font-weight: 400;
+  font-weight: 500;
+}
+.barContainer {
+  background-color: #666663;
+  position: absolute;
+  
+  top: 0px;
+  height: 45px;
+  width: 100%;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+.title {
+  color: var(--pale-pink-grey);
+  position: relative;
+  left: 10px;
+  top: -2px;
 }
 
+.logo {
+  width: 150px;
+  padding: 10px;
+}
 .formContainer {
-  background-color: #666663ba;
+  background-color: var(--sand-brown);
   font-family: var(--main-font);
   color: black;
   font-size: 14px;
-  
   position: relative;
-  top: 250px;
+  top: 280px;
   left: 50%;
   transform: translate(-50%, -50%);
-  
-  flex-direction: row;
-  flex-wrap: wrap;
   display: flex;
-  justify-content: center;
-  align-content: center;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
   height: 400px;
-  width: 650px;
+  width: 1000px;
   padding: 10px;
   gap: 2px;
   border: 5px solid #3c3c3b;
-  
 }
 
 .btnBackHome {
@@ -39,98 +55,143 @@
   width: 120px;
   transition: background-color 0.1s linear 0s;
   position: absolute;
-  top: 15px;
+  top: 5px;
   right: 58px;
   border: none;
   margin-left: 5px;
-
   font-family: var(--main-font);
-  font-weight: 400;
   cursor: pointer;
 }
 .link {
   text-decoration: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .link:visited {
   color: inherit;
 }
-.name {
+.dataContainer {
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  width: 500px;
+  height: 420px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+}
+.dataContainer label {
+  margin-left: 10px;
+  font-weight: 500;
+}
+.imgContainer {
+  background-color: rgba(128, 128, 128, 0.664);
+  width: 500px;
+  height: 420px;
+  display: flex;
+  flex-direction: column;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  top: 0px;
+  right: 0px;
+}
+
+.nameContainer {
+  
+  margin-top: 35px;
   display: flex;
   flex-direction: row;
-  font-weight: 300;
   height: 25px;
   position: absolute;
-  top: 35px;
+  top: 50px;
 }
+
+
 .inputName {
-  background-color: var(--pale-pink-grey);
-  border-width: 2px 2px 2px 2px;
+  background-color: transparent;
+
+  border-width: 0px 0px 2px 0px;
   border-style: solid;
   border-color: var(--dark-brown);
-  margin-left: 3px;
+  margin-left: 10px;
+}
+
+.inputName::placeholder {
+  padding-left: 5px;
+  color: rgba(0, 0, 0, 0.623);
+}
+.inputName:focus{
+  background-color: var(--pale-pink-grey);
 }
 
 .heightContainer {
-  
+  margin-top: 20px;
+  width: 250px;
   font-size: 14px;
   display: flex;
   flex-direction: row;
-  justify-content: center;
-  margin-right: 5px;
+  justify-content: flex-start;
+  align-items: center;
+  /* position: relative;
+  top: 60px;
+  left: 10px; */
+   position: absolute;
+  top: 90px;
+  margin-left: 10px;
+
+}
+.heightContainer h5 {font-weight: 500;
+  font-size: 14px;}
+.weightContainer {
+  margin-top: 20px;
+  width: 250px;
+  font-size: 14px;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
   align-items: center;
   position: absolute;
-  top: 110px;
-  left: 50%;
-  transform: translate(-50%, -50%);
+  top: 130px;
+  margin-left: 10px;
+}
+.weightContainer h5{font-weight: 500;
+  font-size: 14px;}
+
+  .lifeExpectations {
+  margin-top: 30px;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  position: absolute;
+  top: 180px;
 }
 
-.weightContainer {
-  
-  font-size: 14px;
-  margin-right: 5px;
+.temperamentContainer {
+  margin-top: 25px;
   display: flex;
   flex-direction: row;
-  justify-content: center;
+  justify-content: flex-start;
   align-items: center;
   position: absolute;
-  top: 170px;
-  left: 50%;
-  transform: translate(-50%, -50%);
-}
-.lifeExpectations {
-  flex-direction: column;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  position: absolute;
-  top: 230px;
-  left: 50%;
-  transform: translate(-50%, -50%);
-}
-.temperament {
-  
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  position: absolute;
-  top: 110px;
-  left: 110px;
-  padding: 5px 5px;
-  transform: translate(-50%, -50%);
+  top: 220px;
 }
 .selectTemp {
-  
   background-color: var(--pale-pink-grey);
   height: 25px;
   border: none;
   cursor: pointer;
+  margin-left: 10px;
 }
 .tempOption {
   background-color: var(--pale-pink-grey);
 }
 .temperamentList {
+
   flex-direction: row;
   display: flex;
   flex-wrap: wrap;
@@ -138,25 +199,22 @@
   justify-content: flex-start;
   transition: background-color 0.1s linear 0s;
   position: absolute;
-  bottom: 55px;
-  left: 220px;
-  right: 680px;
+  bottom: 30px;
+  left: 42px;
   border: none;
   margin-left: 5px;
-  height: 270px;
+  height: 130px;
+  width: 380px;
   color: var(--dark-brown);
   font-family: var(--main-font);
-  font-weight: 400;
   cursor: pointer;
 }
 .tempShownContainer {
-  
   background-color: var(--pale-pink-grey);
   padding: 5px;
   height: 20px;
   margin-right: 5px;
   margin-top: 5px;
-
   display: flex;
   justify-content: center;
   align-items: center;
@@ -170,42 +228,45 @@
   font-size: 13px;
   color: black;
   font-weight: 400;
-
   position: relative;
 }
 
 .input {
-  margin-left: 3px;
+  margin-left: 10px;
   font-weight: 500;
   width: 30px;
   height: 20px;
-  background-color: var(--pale-pink-grey);
+  background-color: transparent;
   border: none;
-  border-width: 2px 2px 2px 2px;
+  border-width: 0px 0px 2px 0px;
   border-style: solid;
   border-color: var(--dark-brown);
+  
 }
-.inputImg {
-  font-weight: 300;
-  width: 150px;
-  height: 15px;
-  background-color: var(--sand-brown);
-  border: 2px solid var(--dark-brown);
-  border-radius: 2px;
+.input:focus{
   background-color: var(--pale-pink-grey);
 }
-.imgContainer {
-  display: flex;
-  flex-direction: column;
+.inputImg {
   position: absolute;
-  top: 90px;
-  right: 50px;
+  top: 40px;
+  left: 125px;
+  font-weight: 300;
+  width: 250px;
+  height: 12px;
+  border: 2px solid var(--dark-brown);
+  border-radius: 2px;
+  background-color: #c4bbb1;
+}
+.inputImg::placeholder {
+  padding-left: 5px;
+}
+.imgIcon{
+  font-size: 300px;
+  opacity: 0.5;
 }
 .imgForm {
-  max-width: 100px;
-  position: absolute;
-  top: 150px;
-  right: 50px;
+  margin-top: 20px;
+  max-width: 300px;
   border: 3px solid var(--dark-brown);
 }
 .btn {
@@ -214,33 +275,80 @@
   background-color: var(--pale-pink-grey);
   position: absolute;
   font-size: 20px;
-  bottom: 120px;
+  left: 443px;
+  bottom: 10px;
   width: 150px;
   height: 40px;
-}
-.errorContainer {
-  display: flex;
-  flex-direction: column-reverse;
-
-  width: 250px;
-  height: 90px;
-  position: absolute;
-  bottom: 40px;
-  left: 55%;
-  transform: translateX(-50%);
-align-content: center;
-  padding: 10px; 
-  justify-content: center;
-  align-items: flex-start;
+  cursor: pointer;
 }
 
-.error {
-  color: red;
-  margin-top: -16px;
-  margin-bottom: 0px;
-  font-weight: 500;
-}
 
-.label{
+.label {
   margin-left: 5px;
 }
+
+input{
+  outline: none;
+  border: none;
+  
+}
+
+.subtitleData{
+  position:absolute;
+  top: -5px;
+  left: 125px;
+  font-family: var(--main-font);
+}
+
+.subtitleImg{
+  position: absolute;
+  font-family: var(--main-font);
+  top: -5px;
+  left:175px;
+}
+
+.errorName{
+  position: absolute;
+  top: 125px;
+  left: 250px;
+  width: 230px;
+}
+
+.errorHmin{
+  position: absolute;
+  top: 165px;
+  left: 250px;
+  width: 230px;
+}
+.errorHmax{
+  position: absolute;
+  top: 185px;
+  left: 250px;
+  width: 230px;
+}
+.errorWmin{
+  position: absolute;
+  top: 205px;
+  left: 250px;
+  width: 230px;
+}
+.errorWmax{
+  position: absolute;
+  top: 225px;
+  left: 250px;
+  width: 230px;
+}
+.errorLspan{
+  position: absolute;
+  top: 250px;
+  left: 250px;
+  width: 230px;
+}
+.errorTemp{
+  background-color: var(--pale-pink-grey);
+  position: absolute;
+  top: 300px;
+  left: 250px;
+  width: 230px;
+}
+

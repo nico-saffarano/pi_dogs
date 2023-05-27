@@ -8,8 +8,9 @@ import { useState, useEffect } from "react";
 import Form from "./views/Form/Form";
 import About from "./views/About/About";
 
-const EMAIL = "nico@mail.com";
-const PASSWORD = "123456";
+
+const EMAIL = "nico@gmail.com";
+const PASSWORD = "userPass123";
 
 function App() {
   const [access, setAccess] = useState(false);
@@ -31,11 +32,12 @@ function App() {
     <div className="App">
       <Routes>
         <Route exact path="/" element={<Landing login={login} />} />
-        <Route path="/login" element={<Login />} />
+        <Route path="/login" element={<Login/>} />
         <Route path="/home" element={<Home />} />
         <Route path="/dogs/:id" element={<Detail />} />
         <Route path="/create" element={<Form />} />
-        <Route path="/about" element={<About />} />
+        <Route path="/about"  element={<About/>}/>
+      
       </Routes>
     </div>
   );

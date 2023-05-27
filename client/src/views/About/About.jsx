@@ -4,12 +4,13 @@ import dogA from "../../assets/images/dogs/1.png";
 import dogB from "../../assets/images/dogs/2.png";
 import dogC from "../../assets/images/dogs/3.png";
 import dogD from "../../assets/images/dogs/4.png";
+import { MdArrowBackIosNew } from "react-icons/md";
 
 const About = () => {
   return (
     <div className={style.aboutContainer}>
        <button className={style.btnBack}>
-        <NavLink className={style.link} to="/">Back</NavLink>
+        <NavLink className={style.link} to="/"><MdArrowBackIosNew/>Back</NavLink>
       </button>
       <h1 className={style.mainTitle}>¡Welcome to Dog Planet!</h1>
       <p className={style.textA}>

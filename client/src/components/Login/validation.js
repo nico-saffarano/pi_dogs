@@ -13,8 +13,8 @@ const validation = (userData) => {
   if(!/.*\d+.*/.test(userData.password)){
       errors.password = 'Password must contain at least one numeric character'
   }
-  if(userData.password.length < 6 || userData.password.length > 10){
-      errors.password = 'The password must be between 6 and 10 characters in length'
+  if(userData.password.length < 6 || userData.password.length > 14){
+      errors.password = 'The password must be between 6 and 14 characters in length'
   }
 
   return errors;

@@ -66,30 +66,6 @@ export function getTemperaments() {
   };
 }
 
- /* export const createDog = (data) => {
-  return async function () {
-    const newDog = await axios.post("http://localhost:3001/dogs", data);
-    console.log("el perro DE ACTION ", newDog.config.data);
-    return newDog;
-  };
-}; */ 
-/* export const createDog = (data) => {
-  return async () => {
-    try {
-      const newDog = await axios.post("http://localhost:3001/dogs", data);
-      console.log("El perro", newDog.config.data);
-      console.log(
-        "El temperamento del perro",
-        JSON.parse(newDog.config.data).temperament
-      );
-
-      return newDog;
-    } catch (error) {
-      console.error(error);
-    }
-  };
-}; */
-
 export const filterByName = (payload) => {
   return {
     type: FILTER_BY_NAME,
@@ -119,9 +95,6 @@ export const filterByOrigin = (origin) => {
 };
 
 
-
-
-
 export const createDog = (dogData) => {
   return (dispatch) => {
     axios
@@ -142,16 +115,52 @@ export const createDog = (dogData) => {
 };
 
 
-//getAllDogs -> funcionando
-//retorno una funcion asincrona donde:
-//en apiData guardo la respuesta axios
-//en dogs guardo la data
-//hago dispatch para el reducer y envío en payload la data
 
-//getDogDetail -> funcionando
-//retorno una funcion asincrona donde:
-//en apiData guardo la respuesta de la peticion de axios al servidor 3001 con el id
-//retorno un dispatch para rel reducer , enviando en el payload la respuesta
+/* Documentacion
 
-//clearDetail
-//despues de mostrar el detail, limpio el estado global
+getAllDogs -> funcionando 
+hace una peticion de tipo get a la api con axios para traer todos los perros 
+Luego, se hace dispatch de una action para el reducer y se pasa en el payload los datos de los perros obtenidos. 
+
+getDogDetail -> funcionando
+Recibe el id del perro por parametrp y hace una peticion de tipo get a la api con axios
+Se hace dispatch de una action y se pasa en el payload los datos del perro obtenido
+
+clearDetail -> funcionando
+Devuelve una action que es un objeto 
+Se utiliza para indicar que se deben borrar los detalles del perro almacenados en el estado global.
+
+getDogByName -> funcionando
+Recibe el nombre del perro por parametro y hace una peticion de tipo get a la api con axios. 
+La URL utilizada es "http://localhost:3001/dogs?name={name}", donde {name} se reemplaza con el nombre que viene por parametro 
+Se hace dispatch de una action y se pasa en el payload los datos de los perros encontrados.
+
+getTemperaments -> funcionando 
+Se hace una peticion de tipo get a la api con axios
+Se hace dispatch de una action y se pasa como payload los datos de los temperamentos obtenidos.
+
+filterByName -> funcionando
+Para filtrar los perros por nombre. 
+Recibe un payload por parametro, que representa el nombre utilizado para filtrar. 
+Retorna una action y pasa el parametro payload en el payload .
+
+filterByWeight -> funcionando 
+Para filtrar los perros por peso. 
+Recibe un argumento payload, que representa el peso utilizado para filtrar. 
+Retorna una action y pasa el parametro payload en el payload.
+
+FilterByTemperament -> funcionando
+Para filtrar los perros por temperamento 
+Recibe un argumento temperament, que representa el temperamento utilizado para filtrar. 
+Retorna una action y pasa el temperament como payload.
+
+filterByOrigin -> funcionando
+Para filtrar los perros por origen. 
+Recibe un argumento origin, que representa el origen utilizado para filtrar. 
+Retorna una action y pasa el origin como payload.
+
+createDog -> funcionando
+Crea un nuevo perro
+Recibe los datos del perro como argumento dogData. 
+Hace una peticion de tipo POST a la URL
+*/

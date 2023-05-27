@@ -104,3 +104,21 @@
   top: 175px;
   margin-top: 5px;
 }
+
+.eye{
+  background-color: transparent;
+  font-weight: 600;
+ 
+  font-size: 18px;
+}
+.btnShowPass{
+  background-color: transparent;
+  border: none;
+  position: absolute;
+  top: 53px;
+  left: 270px;
+  color: var(--dark-brown);
+  display: flex;
+  height: 25px;
+  cursor: pointer;
+}

@@ -16,9 +16,9 @@ import {
   filterByOrigin,
 } from "../../redux/actions";
 
-const Home = ({ onSearch }) => {
+const Home = () => {
   const [isLoading, setIsLoading] = useState(true);
-
+  
   const dispatch = useDispatch();
 
   const allTemperaments = useSelector((state) => {
@@ -127,7 +127,7 @@ const Home = ({ onSearch }) => {
             <button className={style.resetButton} onClick={handleResetFilters}>
               Reset Filters
             </button>
-            <NavBar onSearch={onSearch} />
+            <NavBar />
           </div>
           <Cards />
         </div>
@@ -137,3 +137,19 @@ const Home = ({ onSearch }) => {
 };
 
 export default Home;
+
+/* Documentacion
+
+estado local isLoading -> para controlar si se está cargando la información o no, y se inicializa en true
+useDispatch de react-redux para despachar acciones en el store de redux
+useSelector de React Redux para obtener el estado temperaments desde el store de redux y guardarlo en allTemperaments
+handlers para los diferentes filtros -> se utilizan para despachar acciones en el store de Redux cuando se selecciona una option de algun <select>.
+useEffect para cargar los perros y los temperamentos una vez que el componente esté montado.Se setea isLoading en true para mostrar el cargador. 
+Se despachan las acciones getAllDogs y getTemperaments para obtener los perros y los temperamentos
+
+Se renderiza el componente:
+Si isLoading es true, se muestra un loader. 
+si isLoading es false, se muestra el componente.
+El contenedor de filtros contiene un <select> para cada filtro y un botón de reinicio de filtros
+El componente Cards se renderiza dentro del componente Home y es responsable de mostrar la información de las tarjetas de los perros.
+ */

@@ -10,7 +10,7 @@
   width: 180px;
   height: 28px;
   position: absolute;
-  right: 115px;
+  right: 105px;
   top: 15px;
   background-color: var(--pale-pink-grey);
   border: none;
@@ -32,14 +32,18 @@
   transition: background-color 0.1s linear 0s;
   position: absolute;
   top: 15px;
-  right: 58px;
+  right: 75px;
   border: none;
   margin-left: 5px;
   height: 28px;
+  width: 28px;
   color: var(--dark-brown);
   font-family: var(--main-font);
   font-weight: 400;
   cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 .btnSearch:hover{
   background-color: #a18061;
@@ -47,9 +51,10 @@
 }
 .btnReset {
   background-color: var(--pale-pink-grey);
+  border: none;
   position: absolute;
   top: 15px;
-  right:8px;
+  right:26px;
   border: none;
   margin-left: 5px;
   height: 28px;

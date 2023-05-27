@@ -15,6 +15,10 @@ const getApi = async () => {
       height_max: parseInt(dog.height.metric.split("-")[1]),
       life_span: dog.life_span,
       image: dog.image.url,
+      origin:dog.origin,
+      bredFor:dog.bred_for,
+      image_id:dog.image.id
+      
     };
   });
   return dogsData;
@@ -61,3 +65,28 @@ const getAllDogs = async () => {
 };
 
 module.exports = { getAllDogs, getApi, getDB };
+
+
+/* Documentacion
+getApi -> funcionando
+Usa axios para hacer una peticion de tipo get a la api
+La respuesta contiene información sobre diferentes razas de perros 
+Se realiza un mapeo de los datos recibidos
+Se extraen los atributos que pidieron ->id,nombre,temperamento,peso mínimo y máximo,altura mínima y máxima,esperanza de vida,imagen
+Todos los datos se guardan en un objeto y se devuelven en un array de objetos
+
+getDB -> funcionando
+Usa el metodo findAll del modelo Dog para hacer una consulta a la db para obtener información de los perros guardados
+Trae todos los atributos básicos del perro, y los temperamentos asociados
+Se mapean los resultados obtenidos para guardar en un objeto los datos 
+Los temperamentos asociados se guardan como un string separado por comas
+Si un perro no tiene temperamentos asociados, se muestra el mensaje "There are no temperaments"  
+Devuelve un array de objetos 
+
+getAllDogs -> funcionando
+Este controller combina los array obtenidos en getApi y getDB
+Se llama a getDB para obtener los datos de perros de la db 
+Se llama a getApi para obtener los perros de la api
+Sn allInfo se concatenan ambos array para obtener un unico array con todos los perros
+Se devuelve el array unico
+*/

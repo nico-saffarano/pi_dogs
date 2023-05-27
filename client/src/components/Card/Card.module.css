@@ -11,6 +11,12 @@
   margin: 20px 5px 1px 5px;
   border-radius: 15px;
   border: none;
+  transition: background-color 0.3s ease;
+  
+}
+
+.cardContainer:hover {
+  background-color: #b8b8b765;
 }
 
 .img {
@@ -30,7 +36,8 @@
   font-family: var(--main-font);
   text-decoration: none;
   font-family: var(--main-font);
-  color: black
+  color: black;
+  font-weight: 500;
 }
 
 .dataName:visited{

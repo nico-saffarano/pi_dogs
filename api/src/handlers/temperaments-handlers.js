@@ -5,18 +5,12 @@ const getTemperamentsHandler = async (req, res) => {
   try {
     const { data } = await axios("https://api.thedogapi.com/v1/breeds/");
 
-    //aca en esta variable,mapeo data quedandome solo con la propiedad temperament de cada perro
-    //el resultado es un array de strings con todos los temperaments
     const temperamentsStr = data.map((dog) => dog.temperament);
 
-    //tengo que recorrer ese array y por cada elemento , spliteo por comas
     let temperamentsSplit = await temperamentsStr.join().split(",");
-    //como los strings tienen espacios, los elimino con trim
+
     let temperamentsTrim = await temperamentsSplit.map((temp) => temp.trim());
 
-    //guardo en la base de datos
-    //recorro cada element del array temperamentsTrim
-    //Si el length del element > 0, busco o creo en la tabla Temperaments a element
     await temperamentsTrim.forEach(async (element) => {
       if (element.length > 0) {
         await Temperament.findOrCreate({
@@ -33,3 +27,26 @@ const getTemperamentsHandler = async (req, res) => {
 };
 
 module.exports = { getTemperamentsHandler };
+
+/* Documentacion
+getTemperamentsHandler -> funcionando
+Este handler se encarga de obtener la lista de temperamentos de perros.
+Usa un try catch para el manejo de errores
+En el try, me quedo con la respuesta de axios a traves del destructuring de data
+Se extrae el arreglo de temperamentos de los datos recibidos utilizando el método map en el arreglo data. 
+Cada elemento del array data contiene la info completa de un perro, asique en temperamentStr extraigo la propiedad temperament
+Los temperamentos vienen en un string, separados por comas
+
+Luego, se obtiene una lista de temperamentos sin duplicados y sin espacios adicionales a traves de los metodos:
+join -> para unir todos los elementos del array temperamentsStr en un string separado por comas 
+split -> para dividir el string en un arreglo de temperamentos usando la coma para separar.
+map -> para recorrer cada elemento del array 
+trim -> para eliminar espacios adicionales
+El resultado se guarda en temperamentsTrim.
+Con un bucle forEach async se recorre cada temperamento en el array
+Si el length del temperamento > 0 (no está vacío) se usa el método findOrCreate para buscar el temperamento en la db
+Si no existe, se crea un nuevo registro con el nombre del temperamento
+se usa el metodo findAll del modelo Temperament para guardar todos los registros de temperamentos de la db en allTemperament
+se devuelve una respuesta con estado 200 (éxito) y se envía la lista de temperamentos como respuesta.
+Si hay error,se devuelve una respuesta con estado 404 (not found)
+*/

@@ -8,6 +8,7 @@ const Cards = () => {
   const dogs = useSelector((state) => state.dogs);
 
   const [page, setPage] = useState(1);
+  // eslint-disable-next-line
   const [perPage, setPerPage] = useState(15);
 
   const max = dogs.length / perPage;
@@ -30,6 +31,7 @@ const Cards = () => {
                 weight_max={dog.weight_max}
                 life_span={dog.life_span}
                 image={dog.image}
+                origin={dog.origin}
               />
             );
           })}

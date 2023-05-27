@@ -1,13 +1,15 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import validation from "./validation";
 import style from "./Login.module.css";
 import { NavLink } from "react-router-dom";
+import { RiEyeLine,RiEyeCloseLine } from "react-icons/ri";
 
 const Login = ({ login }) => {
   const [userData, setUserData] = useState({
     email: "",
     password: "",
   });
+  const [passwordVisible, setPasswordVisible] = useState(false);
 
   const [errors, setErrors] = useState({
     email: "",
@@ -32,6 +34,9 @@ const Login = ({ login }) => {
     event.preventDefault();
     login(userData);
   };
+  const togglePasswordVisibility = () => {
+    setPasswordVisible(!passwordVisible);
+  };
 
   return (
     <form onSubmit={handleSubmit} className={style.formContainer}>
@@ -51,7 +56,7 @@ const Login = ({ login }) => {
 
       <div>
         <input
-          type="password"
+          type={passwordVisible ? "text" : "password"}
           name="password"
           value={userData.password}
           onChange={handleChange}
@@ -70,6 +75,9 @@ const Login = ({ login }) => {
       {errors.password && (
         <p className={style.validationPass}>{errors.password}</p>
       )}
+       <button className={style.btnShowPass} type="button" onClick={togglePasswordVisibility}>
+        {passwordVisible ? <RiEyeCloseLine className={style.eye}/> : <RiEyeLine className={style.eye}/>}
+      </button>
       <button
         className={style.btnLogin}
         type="submit"

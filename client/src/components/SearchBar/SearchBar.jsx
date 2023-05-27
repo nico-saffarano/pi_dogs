@@ -3,6 +3,8 @@ import { getAllDogs, getDogByName } from "../../redux/actions";
 import { useDispatch } from "react-redux";
 import style from "./SearchBar.module.css";
 import { useNavigate } from "react-router-dom";
+import {RiSearchLine} from "react-icons/ri";
+
 
 const SearchBar = () => {
 
@@ -43,7 +45,7 @@ const SearchBar = () => {
       <div className={style.btnContainer}>
       {/* boton de busqueda */}
       <button onClick={handleSubmit} className={style.btnSearch}>
-        Search
+        <RiSearchLine/>
       </button>
 
       {/* boton de reinicio de busqueda, solo se activa si busqué algo */}
